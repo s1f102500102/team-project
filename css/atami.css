@@ -1,0 +1,117 @@
+:root {
+  --primary: #005B99;
+  --text: #222;
+  --white: #fff;
+  --transition: 0.4s ease;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: 'Helvetica Neue', sans-serif;
+  color: var(--text);
+  background: var(--white);
+  line-height: 1.6;
+}
+
+/* ── ヘッダー ── */
+.page-header {
+  width: 100%;
+  position: absolute;
+  top: 0; left: 0;
+  z-index: 100;
+  background: transparent;
+  padding: 32px 0 16px;
+  text-align: center;
+  transition: all var(--transition);
+}
+body.scrolled .page-header {
+  position: fixed;
+  background: rgba(255,255,255,0.95);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  padding: 20px 0 8px;
+}
+.title {
+  margin: 0;
+  color: var(--primary);
+  font-size: 2rem;
+  letter-spacing: 0.08em;
+}
+.subtitle {
+  margin: 4px 0 0;
+  font-size: 1.1rem;
+  color: #444b;
+}
+
+/* ── メインコンテンツ ── */
+main.content {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 140px 16px 40px;
+}
+section {
+  margin-bottom: 42px;
+}
+.section-title {
+  font-size: 1.22rem;
+  color: var(--primary);
+  margin: 0 0 10px;
+}
+.text {
+  font-size: 1rem;
+  color: #555;
+  margin: 0;
+}
+.highlight-list {
+  margin: 0 0 0 1.2em;
+  padding: 0;
+  color: #333;
+}
+.highlight-list li {
+  margin-bottom: 0.5em;
+  line-height: 1.7;
+}
+.image-section {
+  text-align: center;
+}
+.onsen-image {
+  width: 90%;
+  max-width: 420px;
+  border-radius: 8px;
+  margin: 0 auto;
+  box-shadow: 0 2px 16px 0 rgba(0,0,0,0.10);
+  display: block;
+}
+.caption {
+  font-size: 0.95em;
+  color: #888;
+  margin-top: 6px;
+}
+
+/* ── フッター ── */
+.page-footer {
+  text-align: center;
+  padding: 32px 0 28px;
+  background: #fff;
+  color: #666;
+  font-size: 0.9rem;
+}
+.back-link {
+  text-decoration: none;
+  color: var(--primary);
+  font-weight: bold;
+}
+
+/* ── スクロールでヘッダー調整 ── */
+body.scrolled .title {
+  font-size: 1.3rem;
+}
+
+/* ── レスポンシブ ── */
+@media (max-width: 600px) {
+  .title { font-size: 1.3rem; }
+  .section-title { font-size: 1rem; }
+  .onsen-image { width: 100%; }
+  main.content { padding: 108px 3vw 28px; }
+}
