@@ -1,107 +1,159 @@
-/* 基本のリセット */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+:root {
+  --primary: #005b99;
+  --text: #222;
+  --white: #fff;
+  --hero-opacity: 1;
+  --hero-scale: 1;
+  --header-opacity: 0;
 }
 
-/* ボディに余白を追加（固定ヘッダーの高さ分） */
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 body {
-    font-family: 'Arial', sans-serif;
-    padding-top: 80px;
+  margin: 0;
+  font-family: 'Helvetica Neue', sans-serif;
+  color: var(--text);
+  background: var(--white);
+  line-height: 1.6;
 }
 
-/* ヘッダー全体のスタイル */
-header {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background-color: white;
-    padding: 20px 60px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 999;
+/* ヘッダー */
+.page-header {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  background: rgba(255,255,255, var(--header-opacity));
+  box-shadow: 0 2px 6px rgba(0,0,0, calc(var(--header-opacity) * 0.1));
+  transition: background 0.1s linear, box-shadow 0.1s linear;
+  z-index: 100;
+}
+.nav {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.logo {
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: var(--white);
+  transition: color 0.1s linear;
+  text-decoration: none;
+}
+body.scrolled .logo { color: var(--primary); }
+.nav-list {
+  list-style: none;
+  display: flex;
+  margin: 0; padding: 0;
+}
+.nav-list li + li { margin-left: 20px; }
+.nav-list a {
+  color: var(--white);
+  padding: 6px 10px;
+  border-radius: 4px;
+  transition: color 0.1s linear, background 0.1s linear;
+  text-decoration: none;
+}
+.nav-list a:hover {
+  background: var(--white);
+  color: var(--primary);
+}
+body.scrolled .nav-list a { color: var(--primary); }
+
+/* ヒーロー */
+.hero {
+  height: 100vh;
+  background: url('../images/hero.jpg') center/cover no-repeat;
+  background-color: #333;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px;
+  color: var(--white);
+  opacity: var(--hero-opacity);
+  transform: scale(var(--hero-scale));
+  transition: opacity 0.1s linear, transform 0.1s linear;
+}
+.hero.hidden { display: none; }
+.hero h1 {
+  font-size: 3rem;
+  margin: 0 0 10px;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.5);
+}
+.hero p {
+  font-size: 1.2rem;
+  margin: 0 0 30px;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+}
+.scroll-down {
+  font-size: 2rem;
+  animation: bounce 2s infinite;
+  color: var(--white);
+  text-decoration: none;
+}
+@keyframes bounce {
+  0%,100% { transform: translateY(0); }
+  50%    { transform: translateY(10px); }
 }
 
-/* ロゴ */
-.logo a {
-    text-decoration: none;
-    color: #111;
-    font-size: 24px;
-    font-weight: bold;
+/* メイン */
+main {
+  padding-top: 100vh;
+}
+.card-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 20px;
+}
+.card {
+  background: var(--white);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  width: 280px;
+  transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+}
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+}
+.card-img img {
+  width: 100%;
+  display: block;
+}
+.card-content {
+  padding: 16px;
+}
+.card-content h2 {
+  color: var(--primary);
+  margin: 0 0 8px;
+  font-size: 1.3rem;
+}
+.card-content p {
+  margin: 0;
+  color: #555;
 }
 
-/* ナビゲーションメニュー */
-.main-nav .menu {
-    list-style: none;
-    display: flex;
-    gap: 30px;
+/* フッター */
+.page-footer {
+  text-align: center;
+  padding: 40px 0;
+  background: var(--white);
+  color: #666;
+  font-size: 0.9rem;
 }
 
-.main-nav a {
-    text-decoration: none;
-    color: #333;
-    font-weight: 500;
-    transition: color 0.3s;
-}
-
-.main-nav a:hover {
-    color: #0070f3;
-}
-
-/* モバイル対応 */
-.menu-icon {
-    display: none;
-    font-size: 28px;
-    cursor: pointer;
-}
-
-#menu-toggle {
-    display: none;
-}
-
-/* ナビゲーション全体 */
-.main-nav .menu {
-    list-style: none;
-    display: flex;
-    gap: 30px;
-}
-
-/* 各メニュー項目 */
-.main-nav .menu li {
-    position: relative;
-}
-
-/* サブメニュー（初期状態は非表示） */
-.submenu {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: white;
-    padding: 10px 0;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    border-radius: 4px;
-    min-width: 160px;
-    z-index: 1000;
-}
-
-/* サブメニューのリンク */
-.submenu li a {
-    display: block;
-    padding: 10px 20px;
-    color: #333;
-    text-decoration: none;
-    white-space: nowrap;
-}
-
-.submenu li a:hover {
-    background-color: #f0f0f0;
-}
-
-/* ホバー時にサブメニューを表示 */
-.dropdown:hover .submenu {
-    display: block;
+/* レスポンシブ */
+@media (max-width: 600px) {
+  .hero h1 { font-size: 2rem; }
+  .hero p  { font-size: 1rem; }
+  .nav-list { display: none; }
+  .card { width: 90%; }
 }
