@@ -65,6 +65,8 @@ body.scrolled .nav-list a { color: var(--primary); }
 /* ヒーロー */
 .hero {
   height: 100vh;
+  min-height: calc(100vh + 100px); /* 100vh + αでちょっとだけ余裕を追加 */
+  padding-top: 80px;              /* 中身がヘッダーに隠れないように調整 */
   background: url('../images/hero.jpg') center/cover no-repeat;
   background-color: #333;
   text-align: center;
@@ -75,8 +77,11 @@ body.scrolled .nav-list a { color: var(--primary); }
   padding: 0 20px;
   color: var(--white);
   opacity: var(--hero-opacity);
-  transform: scale(var(--hero-scale));
-  transition: opacity 0.1s linear, transform 0.1s linear;
+  transform: scaleY(var(--hero-scale));
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  margin-top: -80px; /* ヘッダー高さと合わせて調整 */
+  padding-top: 80px; /* 内部の文字がヘッダーに隠れないように */
+
 }
 .hero.hidden { display: none; }
 .hero h1 {
@@ -105,6 +110,7 @@ main {
   padding-top: 100vh;
 }
 .card-list {
+  list-style: none; /* ← これがポイント！ */
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
