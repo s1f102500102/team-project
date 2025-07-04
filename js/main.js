@@ -1,5 +1,5 @@
 // スクロール量を読んで CSS変数＆表示制御
-const maxScroll = 250;
+const maxScroll = 200;
 const heroEl   = document.querySelector('.hero');
 window.addEventListener('scroll', () => {
   const y     = window.scrollY;
@@ -7,7 +7,8 @@ window.addEventListener('scroll', () => {
 
   // ヒーロー透明度＆縮小
   document.documentElement.style.setProperty('--hero-opacity', 1 - ratio);
-  document.documentElement.style.setProperty('--hero-scale',   1 - ratio * 0.02);
+  document.documentElement.style.setProperty('--hero-scale', 1 - ratio * 0.012);
+
 
   // ヘッダー不透明度
   document.documentElement.style.setProperty('--header-opacity', ratio);
