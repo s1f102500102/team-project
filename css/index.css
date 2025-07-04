@@ -163,3 +163,89 @@ main {
   .nav-list { display: none; }
   .card { width: 90%; }
 }
+
+/* 湯けむりレイヤー */
+.steam-layer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 10;
+  overflow: hidden;
+}
+
+.steam {
+  position: absolute;
+  bottom: -80px;
+  width: 120px;
+  height: 120px;
+  background: radial-gradient(ellipse at center, rgba(237, 32, 32, 0.3) 0%, rgba(255,255,255,0) 70%);
+  border-radius: 50%;
+  animation: rise 10s infinite ease-in;
+  opacity: 0.9;
+  filter: blur(6px);
+}
+
+/* 3つの湯けむりそれぞれのスタイル */
+.steam1 {
+  left: 18%;
+  width: 90px;
+  height: 90px;
+  animation-delay: 0s;
+  animation-duration: 16s;
+  opacity: 0.4;
+}
+
+.steam2 {
+  left: 50%;
+  width: 120px;
+  height: 120px;
+  animation-delay: 5s;
+  animation-duration: 20s;
+  opacity: 0.3;
+}
+
+.steam3 {
+  left: 72%;
+  width: 70px;
+  height: 70px;
+  animation-delay: 9s;
+  animation-duration: 13s;
+  opacity: 0.5;
+}
+
+@keyframes rise {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.3;
+  }
+  50% {
+    transform: translateY(-40vh) scale(1.2);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(-100vh) scale(1.5);
+    opacity: 0;
+  }
+}
+
+  @keyframes drift {
+    0% {
+      transform: translate(0, 0) scale(1);
+      opacity: 0;
+      border-radius: 50%;
+    }
+    40% {
+      border-radius: 60% 40% 50% 60% / 50% 60% 40% 50%;
+    }
+    100% {
+      transform: translate(-5px, -100vh) scale(1.6);
+      opacity: 0;
+      border-radius: 50%;
+    }
+}
